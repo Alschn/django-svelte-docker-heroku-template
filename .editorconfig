@@ -1,0 +1,22 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+# 4 space indentation
+[*.py]
+indent_style = space
+indent_size = 4
+tab_width = 4
+
+# Indentation override for all JS, HTML, CSS, json, yml
+[*.{js, jsx, ts, tsx, html, css, scss, json, yml, lock}]
+indent_style = space
+indent_size = 2
+tab_width = 2

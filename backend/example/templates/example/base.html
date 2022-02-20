@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>{{ page_title|default:"Django-Svelte"}}</title>
+
+  <link rel='icon' type='image/png' href="{% static 'frontend/favicon.png' %}">
+  <link rel='stylesheet' href="{% static 'frontend/global.css' %}">
+
+  {% block additional_css %}{% endblock additional_css %}
+  {% block svelte_scripts %}{% endblock svelte_scripts %}
+</head>
+
+<body>
+{% block content %}
+
+{% endblock content %}
+
+{% block additional_js %}{% endblock additional_js %}
+</body>
+</html>

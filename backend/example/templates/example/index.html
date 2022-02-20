@@ -1,0 +1,48 @@
+{% extends "example/base.html" %}
+
+{% load static %}
+
+{% block additional_css %}
+  <link rel='stylesheet' href="{% static 'example/css/index.css' %}">
+{% endblock additional_css %}
+
+{% block svelte_scripts %}
+  {# App.svelte component #}
+  <link rel='stylesheet' href="{% static 'frontend/App.css' %}">
+  <script defer src="{% static 'frontend/App.js' %}"></script>
+
+  {# WithProps.svelte component #}
+  <link rel='stylesheet' href="{% static 'frontend/WithProps.css' %}">
+  <script defer src="{% static 'frontend/WithProps.js' %}"></script>
+
+  {# Pass part of context from Django to Svelte component - WithProps will use it as props #}
+  {{ svelte_props|json_script:"secondary-svelte-app-props" }}
+{% endblock svelte_scripts %}
+
+{% block content %}
+  <div id="main">
+    <div>
+      <h1>Hello Django!</h1>
+      <p>This is part of HTML</p>
+    </div>
+
+    <div>
+      <h3>Props passed to second svelte app:</h3>
+      <ul>
+        {% for key, value in svelte_props.items %}
+          <li>"{{ key }}": "{{ value }}"</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {# Svelte will render App.svelte component inside #}
+  <div id="svelte-app"></div>
+
+  {# Svelte will render WithProps.svelte component inside #}
+  <div id="secondary-svelte-app"></div>
+
+  <div id="secondary">
+    <p>This is also part of Django HTML!</p>
+  </div>
+{% endblock content %}
