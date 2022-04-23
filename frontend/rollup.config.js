@@ -5,7 +5,7 @@ import css from "rollup-plugin-css-only";
 import livereload from "rollup-plugin-livereload";
 import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
-import preprocess from "svelte-preprocess";
+import preprocess, { typescript } from "svelte-preprocess";
 
 const isDockerized = process.env.DOCKER === "true";
 
@@ -42,9 +42,9 @@ function serve() {
 
 function componentExportDetails(componentName) {
   return {
-    input: `src/main-${componentName.toLowerCase()}.js`,
+    input: `src/main-${componentName.toLowerCase()}.ts`,
     output: {
-      sourcemap: true,
+      sourcemap: !production,
       format: "iife",
       name: `${componentName.toLowerCase()}`,
       file: `${STATIC_PATH}/${componentName}.js`,
@@ -71,6 +71,10 @@ function componentExportDetails(componentName) {
         dedupe: ["svelte"],
       }),
       commonjs(),
+      typescript({
+        sourceMap: !production,
+        inlineSources: !production
+      }),
 
       // In dev mode, call `npm run start` once
       // the bundle has been generated

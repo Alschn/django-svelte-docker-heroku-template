@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // you would unpack props this way:
   // export let prop1, prop2;
 

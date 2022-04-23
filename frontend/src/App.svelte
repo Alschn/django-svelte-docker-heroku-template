@@ -1,3 +1,9 @@
+<script lang="ts">
+  let count: number = 0;
+  const increment = () => count += 1;
+  const decrement = () => count -= 1;
+</script>
+
 <section>
   <h1>Hello Svelte!</h1>
 
@@ -10,6 +16,13 @@
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
     how to build Svelte apps
   </p>
+
+  <p>Count: {count}</p>
+
+  <div class="buttons">
+    <button on:click={increment}>+</button>
+    <button on:click={decrement}>-</button>
+  </div>
 </section>
 
 <style lang="scss">
@@ -28,6 +41,14 @@
       text-transform: uppercase;
       font-size: 4em;
       font-weight: 100;
+    }
+  }
+
+  .buttons {
+    margin: 4px;
+
+    button {
+      padding: 4px 8px;
     }
   }
 </style>
