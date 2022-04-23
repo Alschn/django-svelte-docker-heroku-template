@@ -7,10 +7,11 @@ import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
 import preprocess from "svelte-preprocess";
 
-const BACKEND_STATIC_PATH = path.resolve(
-  __dirname,
-  "../backend/core/static/frontend"
-);
+const isDockerized = process.env.DOCKER === "true";
+
+const STATIC_PATH = isDockerized ?
+  path.resolve(__dirname, "public") :
+  path.resolve(__dirname, "../backend/core/static/frontend");
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -46,7 +47,7 @@ function componentExportDetails(componentName) {
       sourcemap: true,
       format: "iife",
       name: `${componentName.toLowerCase()}`,
-      file: `${BACKEND_STATIC_PATH}/${componentName}.js`,
+      file: `${STATIC_PATH}/${componentName}.js`,
     },
     plugins: [
       svelte({
@@ -58,7 +59,7 @@ function componentExportDetails(componentName) {
       }),
       // we'll extract any component CSS out into
       // a separate file - better for performance
-      css({ output: `${componentName}.css` }),
+      css({output: `${componentName}.css`}),
 
       // If you have external dependencies installed from
       // npm, you'll most likely need these plugins. In
