@@ -32,8 +32,7 @@ services:
     build: ./frontend
     volumes:
       - ./frontend:/app/frontend
-      - ./frontend/public:/app/frontend/public
-      - /app/frontend/node_modules
+      - node-modules:/app/frontend/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
       - NODE_ENV=development
@@ -43,3 +42,4 @@ services:
 
 volumes:
   postgres-data:
+  node-modules:
