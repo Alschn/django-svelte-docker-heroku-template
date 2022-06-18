@@ -6,16 +6,25 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/svelte": "^3.0.3",
+    "@testing-library/user-event": "^14.2.1",
+    "@tsconfig/svelte": "^2.0.0",
+    "@types/jest": "^28.1.2",
     "axios": "^0.26.0",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1",
+    "jest-transform-stub": "^2.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -23,13 +32,12 @@
     "rollup-plugin-terser": "^7.0.0",
     "sass": "^1.49.7",
     "svelte": "^3.0.0",
+    "svelte-check": "^2.0.0",
     "svelte-jester": "^2.3.2",
     "svelte-preprocess": "^4.0.0",
-    "svelte-check": "^2.0.0",
-    "@rollup/plugin-typescript": "^8.0.0",
-    "typescript": "^4.0.0",
+    "ts-jest": "^28.0.5",
     "tslib": "^2.0.0",
-    "@tsconfig/svelte": "^2.0.0"
+    "typescript": "^4.0.0"
   },
   "dependencies": {
     "sirv-cli": "^1.0.0"
