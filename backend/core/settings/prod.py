@@ -19,7 +19,7 @@ DEBUG = True
 # cors headers configuration
 CORS_ALLOW_ALL_ORIGINS = False
 
-INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
+INSTALLED_APPS.insert(1, "whitenoise.runserver_nostatic")
 
 # whitenoise middle - has to be first in the list
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
