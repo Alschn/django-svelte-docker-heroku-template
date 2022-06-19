@@ -26,7 +26,7 @@ INSTALLED_APPS.insert(1, "whitenoise.runserver_nostatic")
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 # type of static files storage
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # directory to which Django will move those static assets and from which it will serve them when the app is running
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")

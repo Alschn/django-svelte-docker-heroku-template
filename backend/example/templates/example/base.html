@@ -8,9 +8,6 @@
 
   <title>{{ page_title|default:"Django-Svelte"}}</title>
 
-  <link rel='icon' type='image/png' href="{% static 'frontend/favicon.png' %}">
-  <link rel='stylesheet' href="{% static 'frontend/global.css' %}">
-
   {% block additional_css %}{% endblock additional_css %}
   {% block svelte_scripts %}{% endblock svelte_scripts %}
 </head>
