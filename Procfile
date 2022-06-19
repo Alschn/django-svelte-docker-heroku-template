@@ -1,2 +1,2 @@
-release: python manage.py migrate --no-input
-web: gunicorn core.wsgi:application
+release: cd backend && python manage.py migrate --no-input
+web: cd backend && gunicorn core.wsgi:application

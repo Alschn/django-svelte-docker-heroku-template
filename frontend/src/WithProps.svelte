@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // you would unpack props this way:
   // export let prop1, prop2;
 
@@ -6,7 +6,7 @@
 </script>
 
 <section>
-  <h1>Hello 2nd Svelte!</h1>
+  <h1>Hello 2nd Svelte app!</h1>
 
   <p>
     This is another Svelte app.
@@ -15,12 +15,16 @@
 
   <p>Props received from Django (retrieved from html source code):</p>
 
-  <p>
-		{JSON.stringify($$props)}
-	</p>
+  <code>
+    {JSON.stringify($$props)}
+  </code>
 </section>
 
 <style lang="scss">
+  * {
+    font-family: Consolas, "Courier New", monospace;
+  }
+
   section {
     margin-top: 8px;
     text-align: center;
