@@ -1,0 +1,2 @@
+frontend=heroku-buildpack-nodejs
+backend=heroku-buildpack-python
