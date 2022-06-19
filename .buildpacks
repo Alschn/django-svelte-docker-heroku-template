@@ -1,2 +1,2 @@
-frontend=heroku-buildpack-nodejs
-backend=heroku-buildpack-python
+frontend=https://github.com/heroku/heroku-buildpack-nodejs.git
+backend=https://github.com/heroku/heroku-buildpack-python.git
