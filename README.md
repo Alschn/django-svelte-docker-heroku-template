@@ -22,7 +22,7 @@
 
 ### Tools, libraries, frameworks:
 
-This setup has been tested with Python 3.9 and Node 14.
+This setup has been tested with Python 3.10 and Node 14.
 
 ### Backend
 
@@ -34,6 +34,7 @@ This setup has been tested with Python 3.9 and Node 14.
 - `psycopg2` - needed to use Postgres (in Docker container)
 - `gunicorn` - production wsgi http server
 - `whitenoise` - building static files
+- `pipenv` - replacement for venv
 
 Suggested packages:
 
@@ -41,22 +42,21 @@ Suggested packages:
 - `django-rest-auth`, `django-allauth`, `djoser` - making auth easier
 - `django-filter` - enables filtering querysets with url parameters and more
 - `django-ninja` - API framework similar to Fast API but tied with Django
-- `pipenv`, `poetry` - replacement for venv/virtualenv
 - `pytest` - alternative to built-in unittest
 - `selenium` - for e2e testing
 
 ### Frontend
 
 - Svelte `svelte`
-- Typescript `typescript` (not yet)
+- Typescript `typescript`
 - `sass` - enables scss/sass support
 - `axios` - for making requests
 - `jest`, `@testing-library/svelte` + additional packages - unit testing components
 
 Suggested packages:
 
-- UI libraries such as `TailwindCSS`, `Svelte Material UI`, `Smelte`, `Carbon Components Svelte`, `Svelte Materialify`, `Sveltestrap` etc.
-- `cypress` - for e2e testing
+- UI libraries such as `TailwindCSS`, `Svelte Material UI`, `Smelte`, `Carbon Components Svelte`, 
+`Svelte Materialify`, `Sveltestrap` etc.
 
 # Development setup
 
@@ -114,7 +114,7 @@ Run development server in second terminal
 yarn dev
 ```
 
-### Backend tests coverage
+### Backend tests and coverage
 
 ```shell script
 cd backend
@@ -132,13 +132,51 @@ Get report from coverage:
 coverage report -m
 ```
 
+### Frontend tests and coverage
+```shell
+cd frontend
+```
+
+Run tests and gather coverage report
+```shell
+yarn test -- --coverage
+```
+
+Run tests with Jest in watch mode
+```shell
+yarn test:watch
+```
+
+## With Docker
+
+**IMPORTANT**: You need to change CRLF to LF in entrypoint-dev.sh, entrypoint-prod.sh and entrypoint-build.sh, 
+otherwise build will fail because Linux uses different line endings than Windows. 
+You can do this e.g. using Pycharm, choosing LF in Line Separator at the bottom bar. 
+Other files are not affected by this issue.
+
+Create `.env` file in projects **root directory** with variables (use your own values):
+```
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=postgres
+```
+
+Make sure Docker Engine is running.
+
+### 1) Development configuration
+
+While in root directory, build docker images and run them with docker-compose. 
+This might take up to few minutes. Rebuilding image is crucial after installing new packages via pip or npm.
+
+```shell
+docker-compose up --build
+```
+
 # TO DO:
 
-- Dockerfiles, docker-compose.yml, scripts
-- Github Actions
-- Svelte with Typescript
-- Svelte unit tests
-- Some examples (django + svelte connection) and description
+- Some prettier examples (django + svelte connection) and description
+- Frontend section in README (additional info)
+
+## WIP:
 - Production settings
 - Deployment to Heroku
-- Frontend section in README (testing, additional info)

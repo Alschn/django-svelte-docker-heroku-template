@@ -106,6 +106,7 @@ venv.bak/
 .mypy_cache/
 frontend/public/*
 */static/frontend/
+backend/core/static/frontend/*
 !.gitkeep
 !global.css
 !favicon.png
