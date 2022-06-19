@@ -14,7 +14,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 ALLOWED_HOSTS = [os.environ.get("PRODUCTION_HOST")]
 
 # debug has to be false in production
-DEBUG = False
+DEBUG = True
 
 # cors headers configuration
 CORS_ALLOW_ALL_ORIGINS = False
