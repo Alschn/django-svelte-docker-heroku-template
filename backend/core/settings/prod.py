@@ -14,11 +14,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 ALLOWED_HOSTS = [os.environ.get("PRODUCTION_HOST")]
 
 # debug has to be false in production
-DEBUG = True
+DEBUG = False
 
 # cors headers configuration
 CORS_ALLOW_ALL_ORIGINS = False
 
+# not used in production
 INSTALLED_APPS.insert(1, "whitenoise.runserver_nostatic")
 
 # whitenoise middle - has to be first in the list
@@ -34,6 +35,9 @@ STATIC_URL = "/static/"
 
 # database url set at env variable in Heroku
 DATABASE_URL = os.environ.get('DATABASE_URL')
+
+# directory where WhiteNoise can find all non-html static assets
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "core", "static", "frontend")
 
 # db config
 db_from_env = dj_database_url.config(
