@@ -2,7 +2,7 @@
   // you would unpack props this way:
   // export let prop1, prop2;
 
-  // with $$props you can access all of the props passed to this component
+  // with $$props you can access all the props passed to this component
 </script>
 
 <section>
@@ -27,6 +27,7 @@
 
   section {
     margin-top: 8px;
+    padding: 8px;
     text-align: center;
     border: 1px solid #aaa;
 

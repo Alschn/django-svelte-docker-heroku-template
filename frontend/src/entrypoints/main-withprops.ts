@@ -1,4 +1,4 @@
-import SecondApp from "./WithProps.svelte";
+import SecondApp from "../components/WithProps.svelte";
 
 const app = new SecondApp({
   target: document.getElementById('secondary-svelte-app'),
