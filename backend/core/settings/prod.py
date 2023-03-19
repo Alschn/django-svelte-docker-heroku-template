@@ -9,7 +9,7 @@ ROOT_DIR = BASE_DIR.parent.parent
 # set SECRET_KEY for production
 SECRET_KEY = os.environ['SECRET_KEY']
 
-# add heroku app url or create env var with url
+# fly.io app hostname with domain e.g `myapp.fly.dev`
 ALLOWED_HOSTS = [
     os.environ["PRODUCTION_HOST"]
 ]
