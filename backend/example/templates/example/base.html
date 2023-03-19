@@ -5,9 +5,11 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
-
   <title>{{ page_title|default:"Django-Svelte"}}</title>
 
+  {# bundled svelte code #}
+  <script src="{% static 'frontend/index.js' %}"></script>
+  
   {% block additional_css %}{% endblock additional_css %}
   {% block svelte_scripts %}{% endblock svelte_scripts %}
 </head>

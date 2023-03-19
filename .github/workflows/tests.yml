@@ -4,8 +4,7 @@ on:
   push:
 
   pull_request:
-    branches:
-      - master
+    branches: [ master, main ]
 
 
 jobs:
@@ -20,7 +19,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:14.0
+        image: postgres:15.0
         env:
           POSTGRES_DB: github_actions
           POSTGRES_USER: postgres
@@ -45,6 +44,7 @@ jobs:
       - name: Install pipenv
         run: |
           python -m pip install --upgrade pipenv wheel
+
       - id: cache-pipenv
         uses: actions/cache@v1
         with:
@@ -55,9 +55,11 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
           pipenv install --deploy --dev
+
       - name: Django tests
         run: |
           pipenv run coverage run manage.py test
+
       - name: Code coverage
         run: |
           pipenv run coverage report -m
@@ -69,20 +71,41 @@ jobs:
       run:
         working-directory: frontend
 
-    strategy:
-      matrix:
-        node: [ 14 ]
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
-        run: |
-          npm install
+        run: pnpm install
+
       - name: Run tests
-        run: |
-          npm test -- --coverage
+        run: pnpm run test
+
+      - name: Run coverage
+        run: pnpm run coverage

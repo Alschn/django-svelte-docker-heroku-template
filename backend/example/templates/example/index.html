@@ -1,4 +1,4 @@
-{% extends "example/base.html" %}
+{% extends 'example/base.html' %}
 
 {% load static %}
 
@@ -8,12 +8,12 @@
 
 {% block svelte_scripts %}
   {# App.svelte component #}
-  <link rel='stylesheet' href="{% static 'frontend/App.css' %}">
-  <script defer src="{% static 'frontend/App.js' %}"></script>
+  <link rel='stylesheet' href="{% static 'frontend/main-app.css' %}">
+  <script defer type='module' src="{% static 'frontend/main-app.js' %}"></script>
 
   {# WithProps.svelte component #}
-  <link rel='stylesheet' href="{% static 'frontend/WithProps.css' %}">
-  <script defer src="{% static 'frontend/WithProps.js' %}"></script>
+  <link rel='stylesheet' href="{% static 'frontend/main-withprops.css' %}">
+  <script defer type='module' src="{% static 'frontend/main-withprops.js' %}"></script>
 
   {# Pass part of context from Django to Svelte component - WithProps will use it as props #}
   {{ svelte_props|json_script:"secondary-svelte-app-props" }}
