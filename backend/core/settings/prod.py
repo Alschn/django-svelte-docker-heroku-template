@@ -27,12 +27,15 @@ MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # directory to which Django will move those static assets and from which it will serve them when the app is running
-STATIC_ROOT = os.path.join(ROOT_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATIC_URL = "/static/"
 
 # database url set at env variable in Fly.io
 DATABASE_URL = os.environ['DATABASE_URL']
+
+# directory where WhiteNoise can find all non-html static assets
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "core", "static", "frontend")
 
 # db config
 db_from_env = dj_database_url.config(
