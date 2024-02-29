@@ -28,30 +28,32 @@ This setup has been tested with Python 3.11 and Node 16.
 
 - Django + Django Rest Framework `django` `djangorestframework`
 - `django-extensions` - useful utilities (e.g better shell)
-- `django-cors-headers` - handling cross origin requests
+- `django-cors-headers` - handling cross-origin requests
+- `psycopg` - Postgres connector (needed in Docker container)
+- `drf-spectacular` - open api documentation (swagger and redoc)
+- `gunicorn` - production wsgi http server
+- `whitenoise` - building and serving static files
+- `pipenv` - venv and package management tool
 - `coverage` - for code coverage reports and running unit tests
 - `mypy` + `djangorestframework-stubs` - for better typing experience
-- `psycopg2` - needed to use Postgres (in Docker container)
-- `gunicorn` - production wsgi http server
-- `whitenoise` - building static files
-- `pipenv` - replacement for venv
 
 Suggested packages:
 
 - `sentry-sdk` - for error reporting in production
 - `django-debug-toolbar` - for debugging purposes
 - `django-filter` - enables filtering querysets with url parameters and more
-- `drf-spectacular` - open api documentation (swagger and redoc)
 - `channels` - websockets backend
 - `djangorestframework-simplejwt`, `dj-rest-auth`, `django-allauth`, `djoser` - making auth easier
 - `django-import-export` - import/export data from admin page
 - `django-ninja` - API framework similar to Fast API but tied with Django
+- `factory-boy` - creating test data (for unit tests and staging)
+- `freezegun` - mocking time in unit tests
 - `pytest` - alternative to built-in unittest
 - `playwright` / `selenium` - for e2e testing
 
 Useful materials:
 
-- https://docs.djangoproject.com/en/4.1/
+- https://docs.djangoproject.com/en/5.0/
 - https://github.com/wsvincent/awesome-django
 
 ### Frontend
@@ -66,8 +68,9 @@ Useful materials:
 
 Suggested packages:
 
-- UI libraries such as `TailwindCSS`, `Svelte Material UI`, `Smelte`, `Carbon Components Svelte`,
+- UI libraries such as `shadcn-svelte`, `TailwindCSS`, `Svelte Material UI`, `Smelte`, `Carbon Components Svelte`,
   `Svelte Materialify`, `Sveltestrap` etc.
+- `@tanstack/svelte-query` - for data fetching, caching and server state management
 
 Useful materials:
 

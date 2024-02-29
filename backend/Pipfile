@@ -4,20 +4,23 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-djangorestframework = "*"
-django-stubs = "*"
-djangorestframework-stubs = "*"
-django-extensions = "*"
-django-cors-headers = "*"
-python-dotenv = "*"
-psycopg2 = "*"
-dj-database-url = "*"
-whitenoise = "*"
-gunicorn = "*"
+django = "==5.0.2"
+djangorestframework = "==3.14.0"
+django-extensions = "==3.2.3"
+django-cors-headers = "==4.3.1"
+drf-spectacular = "==0.27.1"
+python-dotenv = "==1.0.1"
+psycopg = { extras = ["binary"], version = "==3.1.18" }
+dj-database-url = "==2.1.0"
+whitenoise = "==6.6.0"
+gunicorn = "==21.2.0"
 
 [dev-packages]
 coverage = "*"
+mypy = "*"
+ruff = "*"
+django-stubs = "==4.2.7"
+djangorestframework-stubs = "==3.14.5"
 
 [requires]
 python_version = "3.11"
